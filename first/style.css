@@ -1,0 +1,115 @@
+/*
+  =====================================================
+  FILE 2 of 2: style.css  (the LOOK of the page)
+  =====================================================
+
+  If HTML is the skeleton, CSS is the clothes, colors and makeup.
+  It tells the browser HOW things should look.
+
+  Every CSS rule has the same shape:
+
+      what-to-style {
+        property: value;
+      }
+
+  In CSS, comments look like this one: /* note */
+*/
+
+
+/* ---------- STEP 1: The whole page ----------
+   "body" means everything on the page.
+   Try changing the background color to red, then to any color name you like! */
+body {
+  background-color: #1e1e2f;       /* dark blue-purple background */
+  font-family: Arial, sans-serif;  /* the style of letters */
+  color: white;                    /* the color of the text */
+  text-align: center;              /* center all text */
+  margin: 0;                       /* remove the default gap around the page */
+  padding: 40px 20px;              /* space INSIDE the edges of the page */
+}
+
+
+/* ---------- STEP 2: The card ----------
+   A dot (.) means "find the thing with this class name".
+   So ".card" finds <div class="card"> in our HTML. */
+.card {
+  background-color: #2d2d44;  /* a slightly lighter box */
+  max-width: 400px;           /* the box can't get wider than this */
+  margin: 0 auto;             /* "auto" on the sides = centered on the page */
+  padding: 30px;              /* space between the box edge and what's inside */
+  border-radius: 20px;        /* round the corners. Try 0px, then 50px! */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);  /* a soft shadow under the box */
+}
+
+
+/* ---------- STEP 3: The avatar circle ---------- */
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;          /* 50% turns a square into a perfect circle */
+  background-color: #ffcc00;   /* yellow */
+  font-size: 50px;             /* makes the emoji big */
+  line-height: 100px;          /* centers the emoji up and down */
+  margin: 0 auto 15px auto;    /* centers the circle, with a gap below it */
+}
+
+
+/* ---------- STEP 4: Headings ----------
+   No dot here: "h1" styles EVERY <h1> on the page. */
+h1 {
+  margin: 10px 0 5px 0;
+  font-size: 28px;
+}
+
+h2 {
+  color: #ffcc00;               /* yellow headings */
+  font-size: 20px;
+  margin-top: 25px;
+}
+
+.tagline {
+  color: #aaaacc;               /* soft grey-purple */
+  margin: 0;
+}
+
+
+/* ---------- STEP 5: The list ---------- */
+ul {
+  list-style: none;             /* remove the boring bullet dots (we use emojis) */
+  padding: 0;
+}
+
+li {
+  background-color: #3a3a55;
+  margin: 8px 0;                /* space above and below each item */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+/* ---------- STEP 6: The button ---------- */
+.button {
+  display: inline-block;        /* lets the link act like a box we can size */
+  background-color: #ffcc00;
+  color: #1e1e2f;
+  text-decoration: none;        /* remove the underline from the link */
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* ":hover" means "when the mouse is on top of it".
+   Move your mouse over the button to see this happen! */
+.button:hover {
+  background-color: #ff6b6b;    /* turns coral red */
+  color: white;
+}
+
+
+/* ---------- STEP 7: The footer ---------- */
+footer {
+  margin-top: 30px;
+  color: #aaaacc;
+  font-size: 14px;
+}

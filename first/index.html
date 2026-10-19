@@ -1,0 +1,68 @@
+<!doctype html>
+<!--
+  =====================================================
+  PROJECT: "All About Me" page
+  FILE 1 of 2: index.html  (the STRUCTURE of the page)
+  =====================================================
+
+  HTML is the skeleton. It tells the browser WHAT is on the page:
+  headings, paragraphs, lists, buttons.
+
+  Anything between <!--  and  -->
+
+<!-- <html> wraps EVERYTHING on the page. lang="en" says the page is in English. -->
+<html lang="en">
+  <!-- <head> holds information ABOUT the page. Nothing in here shows on the page itself. -->
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- The title appears on the browser TAB. Change it to your own name! -->
+    <title>All About Me</title>
+
+    <!-- This line connects our second file (style.css) to this page.
+         Without it, the page would be plain black text on white. -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <!-- <body> holds everything you can SEE on the page. -->
+  <body>
+    <!-- <div> is an invisible box used to group things together.
+         class="card" is a NAME TAG. CSS uses it to find this box and style it. -->
+    <div class="card">
+      <!-- A circle with an emoji. Change the emoji to anything you like! -->
+      <div class="avatar">😎</div>
+
+      <!-- <h1> is the BIGGEST heading. Use it once, for the main title. -->
+      <h1>Hi, I'm Your Name</h1>
+
+      <!-- <p> means paragraph. This line is our tagline. -->
+      <p class="tagline">Future Builder</p>
+
+      <!-- <h2> is a smaller heading, for a new section. -->
+      <h2>About Me</h2>
+      <p>
+        This is my very first web page. I made it myself! Today I am learning
+        how to build things on the internet.
+      </p>
+
+      <h2>My Favorites</h2>
+
+      <!-- <ul> is a bullet list. Each <li> is one item in the list. -->
+      <ul>
+        <li>🍕 Favorite food: Jollof rice</li>
+        <li>⚽ Favorite sport: Football</li>
+        <li>🎵 Favorite music: Afrobeats</li>
+      </ul>
+
+      <!-- <a> is a LINK. href="" is where it goes when clicked.
+           class="button" lets CSS make it look like a button. -->
+      <a class="button" href="https://www.google.com" target="_blank"
+        >Click Me</a
+      >
+    </div>
+    <!-- this closes the card box -->
+
+    <!-- <footer> is for the small text at the very bottom. -->
+    <footer>Built with HTML and CSS 💻</footer>
+  </body>
+</html>
