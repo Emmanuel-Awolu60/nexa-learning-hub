@@ -1,0 +1,311 @@
+/* ==========================================================
+   1. DESIGN TOKENS (CSS variables)
+   Define colours, fonts and spacing ONCE here, then reuse them
+   everywhere with var(--name). To re-theme the whole site,
+   change these values and nothing else.
+   ========================================================== */
+:root {
+  --wine:   #4a0d24;   /* deep hibiscus: hero and dark sections */
+  --zobo:   #b3173b;   /* bright zobo red: buttons and accents */
+  --ginger: #f0b429;   /* warm yellow: highlights on dark */
+  --leaf:   #2f6b4f;   /* green: used on one card only */
+  --paper:  #fcf6f4;   /* page background (a very light pink) */
+  --blush:  #f6e4e2;   /* tinted section background */
+  --ink:    #2a1118;   /* body text (never pure black) */
+
+  --font-head: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --font-body: "Figtree", system-ui, sans-serif;
+
+  --radius: 18px;
+}
+
+
+/* ==========================================================
+   2. RESET AND BASE STYLES
+   Browsers add their own default spacing. We remove it so
+   every browser starts from the same place.
+   box-sizing: border-box makes widths include padding, which
+   makes layout maths much easier.
+   ========================================================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }   /* nav links glide instead of jumping */
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.125rem;       /* 1rem = 16px, so this is 18px */
+  line-height: 1.65;         /* space between lines of text */
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+/* clamp(min, ideal, max): text grows with the screen but never
+   gets smaller or larger than the limits. No media query needed. */
+h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); }
+h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 1rem; }
+h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+
+a { color: inherit; }
+
+
+/* ==========================================================
+   3. LAYOUT HELPERS
+   .container keeps content in a centred column, so lines of
+   text never stretch across a huge monitor.
+   .section gives every section the same vertical breathing room.
+   ========================================================== */
+.container {
+  width: min(1100px, 100% - 3rem);   /* max 1100px, with 1.5rem edge gaps */
+  margin-inline: auto;               /* auto left/right margins = centred */
+}
+
+.section { padding-block: 5.5rem; }
+.section-tinted { background: var(--blush); }
+
+.section-intro { margin-bottom: 2.5rem; max-width: 55ch; }  /* ch = width of one "0", good for text lines */
+
+
+/* ==========================================================
+   4. BUTTONS
+   One shared .btn style, then small variants on top.
+   In the HTML a button has two classes: class="btn btn-primary".
+   ========================================================== */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;              /* huge radius = pill shape */
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: transform 0.15s, background 0.15s;
+}
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary { background: var(--ginger); color: var(--wine); }
+.btn-ghost   { border-color: rgba(255, 255, 255, 0.5); color: #fff; }
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.12); }
+.btn-accent  { background: var(--zobo); color: #fff; }
+
+/* Keyboard users need to see where they are. Never remove focus styles. */
+a:focus-visible { outline: 3px solid var(--ginger); outline-offset: 3px; }
+
+
+/* ==========================================================
+   5. HEADER AND NAVIGATION
+   Flexbox puts the logo on the left and links on the right.
+   justify-content: space-between pushes them to opposite ends.
+   position: sticky keeps the header visible while scrolling.
+   ========================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;                       /* stay above other content */
+  background: var(--wine);
+  color: #fff;
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1rem;
+}
+.logo {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;                  /* remove bullet points */
+  align-items: center;
+}
+.nav-links a { text-decoration: none; font-weight: 500; }
+.nav-links a:hover { color: var(--ginger); }
+.nav-cta {
+  background: var(--zobo);
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+}
+.nav-links a.nav-cta:hover { color: #fff; background: #cf1f48; }
+
+
+/* ==========================================================
+   6. SECTION 1: HERO
+   CSS Grid with two equal columns: text and the circle badge.
+   The badge is a div turned into a circle with border-radius: 50%.
+   ========================================================== */
+.hero {
+  background: var(--wine);
+  color: #fff;
+  padding-block: 6rem;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;  /* left column slightly wider */
+  gap: 3rem;
+  align-items: center;
+}
+.hero .lead { margin: 1.5rem 0 2rem; max-width: 46ch; color: #f1d9dd; }
+.button-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.hero-badge {
+  width: min(340px, 80%);
+  aspect-ratio: 1;                   /* keeps width and height equal */
+  margin-inline: auto;
+  border-radius: 50%;
+  background: var(--zobo);
+  border: 10px solid var(--ginger);
+  display: flex;                     /* flexbox again, to centre the text */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotate(-6deg);
+}
+.badge-big   { font-family: var(--font-head); font-weight: 800; font-size: 6rem; line-height: 1; }
+.badge-small { font-size: 1.05rem; }
+
+
+/* ==========================================================
+   7. SECTION 2: OUR STORY
+   Another two-column grid. Heading left, paragraphs right.
+   ========================================================== */
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: start;
+}
+.story-text p + p { margin-top: 1.25rem; }   /* "+" = a p that comes right after a p */
+
+
+/* ==========================================================
+   8. SECTION 3: FLAVOUR CARDS
+   repeat(auto-fit, minmax(240px, 1fr)) is a very useful line:
+   "fit as many columns as you can, each at least 240px wide".
+   Cards wrap to new rows on small screens by themselves.
+   ========================================================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.75rem;
+}
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;                  /* clips the colour strip to the rounded corners */
+  box-shadow: 0 6px 20px rgba(74, 13, 36, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+.card-strip { height: 14px; }
+.tint-classic   { background: var(--zobo); }
+.tint-pineapple { background: var(--ginger); }
+.tint-mint      { background: var(--leaf); }
+
+.card-body { padding: 1.75rem; display: flex; flex-direction: column; flex: 1; }
+.price {
+  margin-top: auto;                  /* pushes the price to the bottom of every card */
+  padding-top: 1rem;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--zobo);
+}
+
+
+/* ==========================================================
+   9. SECTION 4: HOW IT'S MADE
+   The browser counts the <ol> items for us. We use a CSS counter
+   to show the number inside a circle.
+   ========================================================== */
+.steps {
+  list-style: none;
+  counter-reset: step;               /* start a counter called "step" */
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 2rem;
+  max-width: 700px;
+}
+.steps li {
+  counter-increment: step;           /* add 1 for every list item */
+  display: flex;
+  gap: 1.5rem;
+}
+.steps li::before {                  /* ::before = generated content before the item */
+  content: counter(step);
+  flex-shrink: 0;                    /* don't let the circle get squashed */
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--wine);
+  color: var(--ginger);
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.3rem;
+  display: grid;
+  place-items: center;               /* quick way to centre one thing */
+}
+
+
+/* ==========================================================
+   10. SECTION 5: ORDER
+   A dark, centred call-to-action block that mirrors the hero,
+   so the page starts and ends with the same colour.
+   ========================================================== */
+.order {
+  background: var(--wine);
+  color: #fff;
+  text-align: center;
+}
+.order-inner .lead { max-width: 50ch; margin: 0 auto 2rem; color: #f1d9dd; }
+.small { margin-top: 1.25rem; font-size: 1rem; color: #f1d9dd; }
+
+
+/* ==========================================================
+   11. FOOTER
+   ========================================================== */
+.site-footer {
+  background: var(--ink);
+  color: #d9c3c8;
+  padding-block: 1.5rem;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+
+/* ==========================================================
+   12. RESPONSIVE DESIGN (media queries)
+   Everything above is for large screens. A media query says:
+   "only apply these rules when the screen is 800px wide or less".
+   Here we turn the two-column grids into single columns and
+   shrink the spacing and navigation for phones.
+   ========================================================== */
+@media (max-width: 800px) {
+  .hero-grid,
+  .story-grid { grid-template-columns: 1fr; }
+
+  .hero { padding-block: 4rem; }
+  .section { padding-block: 4rem; }
+  .story-grid { gap: 1.5rem; }
+  .hero-badge { width: 220px; }
+  .badge-big { font-size: 4rem; }
+
+  .nav-links { gap: 1rem; font-size: 0.95rem; }
+  .nav-links li:nth-child(1),
+  .nav-links li:nth-child(3) { display: none; }  /* hide two links to save space */
+}
+
+/* Respect people who turn off animations in their device settings. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}

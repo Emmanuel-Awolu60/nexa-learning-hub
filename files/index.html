@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--
+  PAGE SETUP
+  <!DOCTYPE html> tells the browser "this is a modern HTML5 page".
+-->
+<html lang="en">
+<head>
+  <!-- HEAD: information ABOUT the page. Nothing in here is shown on screen. -->
+  <meta charset="UTF-8" />
+
+  <!-- This line makes the page fit phone screens. Without it, mobile browsers zoom out. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- The title shows in the browser tab and in Google results. -->
+  <title>Ruby Leaf Zobo | Small-batch hibiscus drinks from Lagos</title>
+  <meta name="description" content="Small-batch zobo brewed in Lagos. Three flavours, steeped for 48 hours, delivered cold." />
+
+  <!-- Google Fonts: two free fonts. The page still works if they fail to load (see the fallbacks in style.css). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Links our own CSS file. All the styling lives there. -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       HEADER: the logo and navigation links.
+       <header> and <nav> are "semantic" tags. They describe what the
+       content IS, which helps screen readers and search engines.
+       The href="#story" links jump to the element with id="story".
+       ============================================================ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="logo">Ruby Leaf</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#story">Our story</a></li>
+          <li><a href="#flavours">Flavours</a></li>
+          <li><a href="#process">How it's made</a></li>
+          <li><a href="#order" class="nav-cta">Order</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================================================
+         SECTION 1: HERO
+         The first thing a visitor sees. Its job: say what this is
+         and give one clear action. One <h1> per page, always.
+         The right-hand circle is pure CSS. There is no image file.
+         ============================================================ -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1>Zobo the way it should taste.</h1>
+          <p class="lead">
+            We steep real hibiscus leaves for 48 hours, add fresh ginger and
+            fruit, and deliver it cold in glass bottles across Lagos.
+          </p>
+          <div class="button-row">
+            <a href="#order" class="btn btn-primary">Order a crate</a>
+            <a href="#flavours" class="btn btn-ghost">See the flavours</a>
+          </div>
+        </div>
+
+        <!-- aria-hidden="true" tells screen readers to skip this decoration. -->
+        <div class="hero-badge" aria-hidden="true">
+          <span class="badge-big">48</span>
+          <span class="badge-small">hours of steeping<br />in every bottle</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2: OUR STORY
+         A short "about" block. Two columns: a heading on the left,
+         paragraphs on the right. Good practice for reading: short
+         lines of text, lots of space.
+         ============================================================ -->
+    <section class="section" id="story">
+      <div class="container story-grid">
+        <h2>Started with one pot and a stubborn grandmother.</h2>
+        <div class="story-text">
+          <p>
+            Ruby Leaf began in a family kitchen in Surulere. The recipe was
+            simple: dried hibiscus, ginger, cloves, and patience. Most shop
+            zobo is rushed and sweet. Ours is slow and tart, with sugar added
+            last and only a little.
+          </p>
+          <p>
+            Today we brew in small batches of 40 litres, so every bottle is
+            fresh. No powders, no colouring, no preservatives. If it tastes
+            like the zobo you grew up with, we did our job.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3: FLAVOURS
+         Three cards in a row. Each card is an <article> because it
+         could stand alone. CSS Grid lines them up, and they stack
+         on small screens automatically.
+         The "tint" classes (tint-classic, etc.) only change the colour
+         strip at the top of each card.
+         ============================================================ -->
+    <section class="section section-tinted" id="flavours">
+      <div class="container">
+        <h2>Three flavours. One recipe at heart.</h2>
+        <p class="section-intro">Every bottle is 750 ml and made the same week you drink it.</p>
+
+        <div class="card-grid">
+
+          <article class="card">
+            <div class="card-strip tint-classic"></div>
+            <div class="card-body">
+              <h3>Classic</h3>
+              <p>Deep red, tart, and warm with ginger and cloves. The one we started with.</p>
+              <p class="price">₦2,500</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-strip tint-pineapple"></div>
+            <div class="card-body">
+              <h3>Pineapple &amp; ginger</h3>
+              <p>Sweeter and brighter. Fresh pineapple softens the tartness; extra ginger keeps a kick.</p>
+              <p class="price">₦2,800</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-strip tint-mint"></div>
+            <div class="card-body">
+              <h3>Mint &amp; lime</h3>
+              <p>Light and sharp. Best served over ice on a hot afternoon.</p>
+              <p class="price">₦2,800</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4: HOW IT'S MADE
+         An <ol> (ordered list) because these steps really happen in
+         order. The numbers come from the browser, and CSS only styles
+         them. Flexbox is used to place the number beside the text.
+         ============================================================ -->
+    <section class="section" id="process">
+      <div class="container">
+        <h2>From dried leaf to cold bottle</h2>
+
+        <ol class="steps">
+          <li>
+            <h3>Wash and soak</h3>
+            <p>We rinse the hibiscus, then soak it in hot water with ginger and cloves.</p>
+          </li>
+          <li>
+            <h3>Steep for 48 hours</h3>
+            <p>Slow steeping pulls out colour and flavour without the bitterness that comes from boiling too long.</p>
+          </li>
+          <li>
+            <h3>Sweeten, chill, bottle</h3>
+            <p>Fruit and a little sugar go in last. Then it's strained, chilled, and sealed in glass.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5: ORDER
+         The call to action. Visitors should know exactly what to do
+         next. Links that start with https://wa.me open WhatsApp, and
+         "tel:" links start a phone call on mobile.
+         ============================================================ -->
+    <section class="section order" id="order">
+      <div class="container order-inner">
+        <h2>Ready for a crate?</h2>
+        <p class="lead">
+          Message us on WhatsApp with your flavour and address. We deliver
+          within Lagos Island and Mainland, Tuesday to Saturday.
+        </p>
+        <a href="https://wa.me/2348000000000" class="btn btn-accent">Order on WhatsApp</a>
+        <p class="small">Or call <a href="tel:+2348000000000">+234 800 000 0000</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER: small print at the bottom of every page.
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Ruby Leaf Zobo. Brewed in Lagos, Nigeria.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
